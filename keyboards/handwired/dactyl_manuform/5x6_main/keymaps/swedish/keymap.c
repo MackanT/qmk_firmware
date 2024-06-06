@@ -15,7 +15,7 @@ enum {
 };
 
 enum dactyl_layers {
-  _COLEM,
+  _COLEM = 0,
   _QWERTY,
   _LOWER,
   _RAISE,
@@ -249,124 +249,124 @@ void right_reset (tap_dance_state_t *state, void *user_data) {
 
 
 
-#ifdef POINTING_DEVICE_ENABLE
-#include "analog.h"
-#include "pointing_device.h"
+// #ifdef POINTING_DEVICE_ENABLE
+// #include "analog.h"
+// #include "pointing_device.h"
 
-int xPin = B4; // VRx
-int yPin = B5; // VRy
-int swPin = C4; // SW
+// int xPin = B4; // VRx
+// int yPin = B5; // VRy
+// int swPin = C4; // SW
 
-// Set Parameters
-// uint16_t minAxisValue = 200;
-// uint16_t maxAxisValue = 820;
-uint16_t minAxisValue = 0;
-uint16_t maxAxisValue = 1023;
+// // Set Parameters
+// // uint16_t minAxisValue = 200;
+// // uint16_t maxAxisValue = 820;
+// uint16_t minAxisValue = 0;
+// uint16_t maxAxisValue = 1023;
 
-// uint8_t maxCursorSpeed = 2;
+// // uint8_t maxCursorSpeed = 2;
+// // uint8_t precisionSpeed = 1;
+// // uint8_t speedRegulator = 24;  // Lower Values Create Faster Movement
+// uint8_t maxCursorSpeed = 4;
 // uint8_t precisionSpeed = 1;
-// uint8_t speedRegulator = 24;  // Lower Values Create Faster Movement
-uint8_t maxCursorSpeed = 4;
-uint8_t precisionSpeed = 1;
-uint8_t speedRegulator = 20;  // Lower Values Create Faster Movement
+// uint8_t speedRegulator = 20;  // Lower Values Create Faster Movement
 
-int8_t xPolarity = -1;
-int8_t yPolarity = -1;
+// int8_t xPolarity = -1;
+// int8_t yPolarity = -1;
 
-uint8_t cursorTimeout = 5;
+// uint8_t cursorTimeout = 5;
 
-int16_t xOrigin, yOrigin;
+// int16_t xOrigin, yOrigin;
 
-uint16_t lastCursor = 0;
+// uint16_t lastCursor = 0;
 
-int16_t axisCoordinate(uint8_t pin, uint16_t origin) {
-    int8_t  direction;
-    int16_t distanceFromOrigin;
-    int16_t range;
+// int16_t axisCoordinate(uint8_t pin, uint16_t origin) {
+//     int8_t  direction;
+//     int16_t distanceFromOrigin;
+//     int16_t range;
 
-    int16_t position = analogReadPin(pin);
+//     int16_t position = analogReadPin(pin);
 
-    if (origin == position) {
-        return 0;
-    } else if (origin > position) {
-        distanceFromOrigin = origin - position;
-        range              = origin - minAxisValue;
-        direction          = -1;
-    } else {
-        distanceFromOrigin = position - origin;
-        range              = maxAxisValue - origin;
-        direction          = 1;
-    }
-
-    float   percent    = (float)distanceFromOrigin / range;
-    int16_t coordinate = (int16_t)(percent * 100);
-    if (coordinate < 0) {
-        return 0;
-    } else if (coordinate > 100) {
-        return 100 * direction;
-    } else {
-        return coordinate * direction;
-    }
-}
-
-// int8_t axisToMouseComponent(uint8_t pin, int16_t origin, uint8_t maxSpeed, int8_t polarity) {
-//     int coordinate = axisCoordinate(pin, origin);
-//     if (coordinate != 0) {
-//         float percent = (float)coordinate / 100;
-//         if (get_mods() & MOD_BIT(KC_LSFT)) {
-//             return percent * precisionSpeed * polarity * (abs(coordinate) / speedRegulator);
-//         } else {
-//             return percent * maxCursorSpeed * polarity * (abs(coordinate) / speedRegulator);
-//         }
-//     } else {
+//     if (origin == position) {
 //         return 0;
+//     } else if (origin > position) {
+//         distanceFromOrigin = origin - position;
+//         range              = origin - minAxisValue;
+//         direction          = -1;
+//     } else {
+//         distanceFromOrigin = position - origin;
+//         range              = maxAxisValue - origin;
+//         direction          = 1;
+//     }
+
+//     float   percent    = (float)distanceFromOrigin / range;
+//     int16_t coordinate = (int16_t)(percent * 100);
+//     if (coordinate < 0) {
+//         return 0;
+//     } else if (coordinate > 100) {
+//         return 100 * direction;
+//     } else {
+//         return coordinate * direction;
 //     }
 // }
-int axisToMouseComponent(int pin, int origin, int maxSpeed, int polarity) {
-  int coordinate = axisCoordinate(pin, origin);
-  if (coordinate == 0) {
-    return 0;
-  }
-  else {
-    float percent = (float)coordinate / 100;
-    if (keyboard_report->mods & MOD_BIT(KC_LSFT)) {
-      return percent * precisionSpeed * polarity * (abs(coordinate)/speedRegulator);
-    }
-    else {
-      return percent * maxCursorSpeed * polarity * (abs(coordinate)/speedRegulator);
-    }
-  }
-}
 
-void pointing_device_init(void) {
-    // init pin? Is needed?
-    // setPinInputHigh(E6);
-    // Account for drift
-    xOrigin = analogReadPin(xPin);
-    yOrigin = analogReadPin(yPin);
-}
+// // int8_t axisToMouseComponent(uint8_t pin, int16_t origin, uint8_t maxSpeed, int8_t polarity) {
+// //     int coordinate = axisCoordinate(pin, origin);
+// //     if (coordinate != 0) {
+// //         float percent = (float)coordinate / 100;
+// //         if (get_mods() & MOD_BIT(KC_LSFT)) {
+// //             return percent * precisionSpeed * polarity * (abs(coordinate) / speedRegulator);
+// //         } else {
+// //             return percent * maxCursorSpeed * polarity * (abs(coordinate) / speedRegulator);
+// //         }
+// //     } else {
+// //         return 0;
+// //     }
+// // }
+// int axisToMouseComponent(int pin, int origin, int maxSpeed, int polarity) {
+//   int coordinate = axisCoordinate(pin, origin);
+//   if (coordinate == 0) {
+//     return 0;
+//   }
+//   else {
+//     float percent = (float)coordinate / 100;
+//     if (keyboard_report->mods & MOD_BIT(KC_LSFT)) {
+//       return percent * precisionSpeed * polarity * (abs(coordinate)/speedRegulator);
+//     }
+//     else {
+//       return percent * maxCursorSpeed * polarity * (abs(coordinate)/speedRegulator);
+//     }
+//   }
+// }
 
-void pointing_device_task(void) {
-    report_mouse_t report = pointing_device_get_report();
+// void pointing_device_init(void) {
+//     // init pin? Is needed?
+//     // setPinInputHigh(E6);
+//     // Account for drift
+//     xOrigin = analogReadPin(xPin);
+//     yOrigin = analogReadPin(yPin);
+// }
 
-    // todo read as one vector
-    if (timer_elapsed(lastCursor) > cursorTimeout) {
-        lastCursor = timer_read();
-        report.x   = axisToMouseComponent(xPin, xOrigin, maxCursorSpeed, xPolarity);
-        report.y   = axisToMouseComponent(yPin, yOrigin, maxCursorSpeed, yPolarity);
-    }
+// void pointing_device_task(void) {
+//     report_mouse_t report = pointing_device_get_report();
 
-    //
-/*
-    if (!readPin(E6)) {
-        report.buttons |= MOUSE_BTN1;
-    } else {
-        report.buttons &= ~MOUSE_BTN1;
-    }
-*/
+//     // todo read as one vector
+//     if (timer_elapsed(lastCursor) > cursorTimeout) {
+//         lastCursor = timer_read();
+//         report.x   = axisToMouseComponent(xPin, xOrigin, maxCursorSpeed, xPolarity);
+//         report.y   = axisToMouseComponent(yPin, yOrigin, maxCursorSpeed, yPolarity);
+//     }
 
-    pointing_device_set_report(report);
-    pointing_device_send();
-}
+//     //
+// /*
+//     if (!readPin(E6)) {
+//         report.buttons |= MOUSE_BTN1;
+//     } else {
+//         report.buttons &= ~MOUSE_BTN1;
+//     }
+// */
 
-#endif
+//     pointing_device_set_report(report);
+//     pointing_device_send();
+// }
+
+// #endif

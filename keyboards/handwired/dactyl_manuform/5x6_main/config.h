@@ -26,17 +26,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 12
 #define MATRIX_COLS 6
 
-// Gray Keyboard
-// wiring of left half
-#define MATRIX_ROW_PINS \
-    { D4, C6, D7, E6, B4, B5 }
-#define MATRIX_COL_PINS \
-    { B6, B2, B3, B1, F7, F6 }
-
 // ms allowed for a tap-dance command
 
-#ifdef JOYSTICK_ENABLE
-  #define JOYSTICK_BUTTON_COUNT 0
-  #define JOYSTICK_AXES_COUNT 2
-  #define JOYSTICK_AXES_RESOLUTION 10
-#endif
+// #ifdef JOYSTICK_ENABLE
+//   #define JOYSTICK_BUTTON_COUNT 0
+//   #define JOYSTICK_AXES_COUNT 2
+//   #define JOYSTICK_AXES_RESOLUTION 10
+// #endif
