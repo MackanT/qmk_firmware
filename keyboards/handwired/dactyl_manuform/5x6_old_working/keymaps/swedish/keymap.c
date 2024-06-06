@@ -15,8 +15,8 @@ enum {
 };
 
 enum dactyl_layers {
-  _QWERTY,
   _COLEM,
+  _QWERTY,
   _LOWER,
   _RAISE,
   _MOUSE,
@@ -77,21 +77,21 @@ tap_dance_action_t tap_dance_actions[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  
- [_QWERTY] = LAYOUT(
-     TD_EPS , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                          KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , SE_QUOT, \
-     KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                                          KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , SE_ARNG, \
-     KC_LSFT, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                                          KC_H   , KC_J   , KC_K   , KC_L   , SE_ODIA, SE_ADIA, \
-     KC_LCTL, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                                          KC_N   , KC_M   , KC_COMM, KC_DOT , SE_SLSH, SE_MINS, \
-                       TCOLE  , KC_BSPC, RAISE  , KC_SPC , TD_MSE  , TD_GUI ,     TGLOW  , KC_BSPC, KC_ENT , LOWER  , SE_PLUS, SE_EQL ,                   \
-                                                           KC_HOME , KC_END ,     KC_RALT, KC_RSFT                                                        \
-  ),
-
   [_COLEM] = LAYOUT(
      TD_EPS , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                          KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , SE_QUOT, \
      KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_G   ,                                          KC_J   , KC_L   , KC_U   , KC_Y   , SE_ODIA, SE_ARNG, \
      KC_LSFT, KC_A   , KC_R   , KC_S   , KC_T   , KC_D   ,                                          KC_H   , KC_N   , KC_E   , KC_I   , KC_O   , SE_ADIA, \
      KC_LCTL, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                                          KC_K   , KC_M   , KC_COMM, KC_DOT , SE_SLSH, SE_MINS, \
                        TQWER  , KC_BSPC, RAISE  , KC_SPC , TD_MSE  , TD_GUI ,     TGLOW  , KC_BSPC, KC_ENT , LOWER  , SE_PLUS, SE_EQL ,                   \
+                                                           KC_HOME , KC_END ,     KC_RALT, KC_RSFT                                                        \
+  ),
+
+ [_QWERTY] = LAYOUT(
+     TD_EPS , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                          KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , SE_QUOT, \
+     KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                                          KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , SE_ARNG, \
+     KC_LSFT, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                                          KC_H   , KC_J   , KC_K   , KC_L   , SE_ODIA, SE_ADIA, \
+     KC_LCTL, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                                          KC_N   , KC_M   , KC_COMM, KC_DOT , SE_SLSH, SE_MINS, \
+                       TCOLE  , KC_BSPC, RAISE  , KC_SPC , TD_MSE  , TD_GUI ,     TGLOW  , KC_BSPC, KC_ENT , LOWER  , SE_PLUS, SE_EQL ,                   \
                                                            KC_HOME , KC_END ,     KC_RALT, KC_RSFT                                                        \
   ),
   
