@@ -77,7 +77,7 @@ tap_dance_action_t tap_dance_actions[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  
-  [_COLEM] = LAYOUT(
+  [_COLEM] = LAYOUT_5x6_v2(
      TD_EPS , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                          KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , SE_QUOT, \
      KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_G   ,                                          KC_J   , KC_L   , KC_U   , KC_Y   , SE_ODIA, SE_ARNG, \
      KC_LSFT, KC_A   , KC_R   , KC_S   , KC_T   , KC_D   ,                                          KC_H   , KC_N   , KC_E   , KC_I   , KC_O   , SE_ADIA, \
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                            KC_HOME , KC_END ,     KC_RALT, KC_RSFT                                                        \
   ),
 
- [_QWERTY] = LAYOUT(
+ [_QWERTY] = LAYOUT_5x6_v2(
      TD_EPS , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                          KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , SE_QUOT, \
      KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                                          KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , SE_ARNG, \
      KC_LSFT, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                                          KC_H   , KC_J   , KC_K   , KC_L   , SE_ODIA, SE_ADIA, \
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                            KC_HOME , KC_END ,     KC_RALT, KC_RSFT                                                        \
   ),
   
-  [_LOWER] = LAYOUT(
+  [_LOWER] = LAYOUT_5x6_v2(
      KC_GRV , KC_EXLM,  SE_AT , KC_HASH, SE_DLR , KC_PERC,                                          SE_CIRC, SE_AMPR, SE_ASTR, SE_SLSH, SE_LPRN, SE_RPRN, \
      SE_TILD, _______, _______, _______, _______, _______,                                          _______, KC_KP_7, KC_KP_8, KC_KP_9, SE_LCBR, SE_RCBR, \
      KC_TILD, _______, _______, _______, _______, _______,                                          _______, KC_KP_4, KC_KP_5, KC_KP_6, SE_LBRC, SE_RBRC, \
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                            KC_PGUP, KC_PGDN,      KC_DOT , KC_COMM                                                        \
   ),
 
-  [_RAISE] = LAYOUT(
+  [_RAISE] = LAYOUT_5x6_v2(
      KC_F12 , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                                          KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , \
      KC_ENT , _______, KC_UP  , _______, _______, _______,                                          QK_BOOT, _______, _______, _______, KC_MUTE, SE_PIPE, \
      _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,                                          _______, _______, _______, _______, KC_VOLU, SE_BSLS, \
@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                            TD_LFT ,  TD_RGT,      _______, _______                                                        \
   ),
 
-  [_MOUSE] = LAYOUT(
+  [_MOUSE] = LAYOUT_5x6_v2(
      _______, KC_BTN4, KC_BTN5, _______, _______, _______,                                          _______, _______, _______, _______, _______, _______, \
      _______, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______,                                          _______, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______, \
      _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______,                                          _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______, \
