@@ -87,17 +87,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
  [_QWERTY] = LAYOUT_5x6_v2(
-     TD_EPS , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                          KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , SE_QUOT, \
-     KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                                          KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , SE_ARNG, \
-     KC_LSFT, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                                          KC_H   , KC_J   , KC_K   , KC_L   , SE_ODIA, SE_ADIA, \
-     KC_LCTL, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                                          KC_N   , KC_M   , KC_COMM, KC_DOT , SE_SLSH, SE_MINS, \
-                       TCOLE  , KC_BSPC, RAISE  , KC_SPC , TD_MSE  , TD_GUI ,     TGLOW  , KC_BSPC, KC_ENT , LOWER  , SE_PLUS, SE_EQL ,                   \
-                                                           KC_HOME , KC_END ,     KC_RALT, KC_RSFT                                                        \
+     _______, _______, _______, _______, _______, _______,                                          _______, _______, _______, _______, _______, _______, \
+     _______, _______, _______, KC_E   , KC_R   , KC_T   ,                                          KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , _______, \
+     _______, _______, KC_S   , KC_D   , KC_F   , KC_G   ,                                          _______, KC_J   , KC_K   , KC_L   , SE_ODIA, _______, \
+     _______, _______, _______, _______, _______, _______,                                          KC_N   , _______, _______, _______, _______, _______, \
+                       TCOLE  , _______, _______, _______, _______ , _______,     _______, _______, _______, _______, _______, _______,                   \
+                                                           _______ , _______,     _______, _______                                                        \
   ),
   
   [_LOWER] = LAYOUT_5x6_v2(
      KC_GRV , KC_EXLM,  SE_AT , KC_HASH, SE_DLR , KC_PERC,                                          SE_CIRC, SE_AMPR, SE_ASTR, SE_SLSH, SE_LPRN, SE_RPRN, \
-     SE_TILD, _______, _______, _______, _______, _______,                                          _______, KC_KP_7, KC_KP_8, KC_KP_9, SE_LCBR, SE_RCBR, \
+     SE_TILD, _______, _______, _______, _______, _______,                                          KC_LNUM, KC_KP_7, KC_KP_8, KC_KP_9, SE_LCBR, SE_RCBR, \
      KC_TILD, _______, _______, _______, _______, _______,                                          _______, KC_KP_4, KC_KP_5, KC_KP_6, SE_LBRC, SE_RBRC, \
      _______, _______, _______, _______, _______, _______,                                          _______, KC_KP_1, KC_KP_2, KC_KP_3, SE_LABK, SE_RABK, \
                        _______, _______, _______, _______, _______, _______,      _______, KC_DEL , _______, _______, KC_KP_0, KC_CALC,                   \
@@ -123,6 +123,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
 };
+
+// Initialization function
+void keyboard_post_init_user(void) {
+    set_single_persistent_default_layer(_COLEM); // Set default layer to Layer 0 (Colemak)
+}
 
 //Determine the current tap dance state
 int cur_dance (tap_dance_state_t *state) {
